@@ -54,8 +54,8 @@
 }
 
 .hat {
-    width: 80px;
-    height: 90%;
+    width: 70px;
+    height: 80%;
 }
 
 .rank-name {
@@ -101,4 +101,14 @@
 .rank-level {
     color: #F28E36;
     font-size: 14px;
+}
+
+.rank-image {
+    width: 400px; /* 원하는 크기로 설정 */
+    position: relative; /* z-index를 적용하려면 position 속성이 필요 */
+    z-index: 1; /* 다른 요소들보다 위에 배치 */
+}
+
+.footer{
+    background-color: white;
 }
