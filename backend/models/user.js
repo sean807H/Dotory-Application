@@ -26,9 +26,10 @@ const user = sequelize.define('User', {
   timestamps: false,
 });
 
-user.associate = (models) => {
-  user.hasMany(models.Quest, { foreignKey: 'user_id', as: 'quests' });
-};
+ // 비밀번호 해시 처리
+ user.beforeCreate(async (user) => {
+  user.password = await bcrypt.hash(user.password, 10);
+});
 
   return user;
 };
