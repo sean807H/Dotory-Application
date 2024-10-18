@@ -1,40 +1,41 @@
-document.getElementById('loginBtn').addEventListener('click', async function() {
-    // 사용자 입력값 가져오기
-    const nickname = document.getElementById('myId').value;
-    const member_pw = document.getElementById('myPw').value;
-    
-    // 메시지를 표시할 요소
-    const messageElement = document.getElementById('message');
-    
-    try {
-        // 로그인 API 호출
-        const response = await fetch('http://localhost:3000/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                nickname: nickname,
-                member_pw: member_pw
-            })
-        });
+document.getElementById('loginBtn').addEventListener('click', async function (event) {
+    event.preventDefault();  // 기본 제출 동작 방지
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-        // 응답 처리
-        const data = await response.json();
-        
-        if (response.ok) {
-            // 로그인 성공
-            messageElement.textContent = '로그인 성공';
-            messageElement.style.color = 'green';
-            // 여기서 추가적인 작업 가능 (ex. 페이지 리디렉션)
-        } else {
-            // 로그인 실패
-            messageElement.textContent = '로그인 실패: ' + data.error;
-            messageElement.style.color = 'red';
-        }
-    } catch (error) {
-        // 서버와의 통신 오류
-        messageElement.textContent = '서버 오류: 로그인할 수 없습니다.';
-        messageElement.style.color = 'red';
+    // 입력값이 비어있는지 확인
+    if (username === "" || password === "") {
+        alert("아이디와 비밀번호를 입력해주세요.");
+        return;
     }
+
+    alert("로그인이 성공했습니다.");
+    window.location.href = "home.html";  // home.html로 리디렉션
+
+    // // 로그인 API 호출
+    // try {
+    //     const response = await fetch('/api/login', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             username: username,
+    //             password: password
+    //         })
+    //     });
+
+    //     const result = await response.json();
+
+    //     if (response.ok) {
+    //         alert("로그인이 성공했습니다.");
+    //         // home.html로 이동
+    //         window.location.href = "home.html";
+    //     } else {
+    //         alert(result.message || "로그인에 실패했습니다.");
+    //     }
+    // } catch (error) {
+    //     console.error("로그인 중 오류 발생:", error);
+    //     alert("로그인 중 오류가 발생했습니다.");
+    // }
 });
