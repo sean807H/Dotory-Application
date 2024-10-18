@@ -1,0 +1,115 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.acorn-count {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 24px;
+    top: 16px;
+}
+
+.acorn-count img {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+}
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-container{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 24px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.podium {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.podium-item {
+    text-align: center;
+    position: relative;
+}
+
+.podium-item.first {
+    transform: scale(1.2); /* 가운데 podium 크기 키우기 */
+}
+
+.hat {
+    width: 70px;
+    height: 80%;
+}
+
+.rank-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.rank-level {
+    color: #F28E36;
+}
+
+.rank-list {
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.rank-number {
+    width: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.arrow {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.rank-name {
+    font-size: 14px;
+    flex-grow: 1;
+}
+
+.rank-level {
+    color: #F28E36;
+    font-size: 14px;
+}
+
+.rank-image {
+    width: 400px; /* 원하는 크기로 설정 */
+    position: relative; /* z-index를 적용하려면 position 속성이 필요 */
+    z-index: 1; /* 다른 요소들보다 위에 배치 */
+}
+
+.footer{
+    background-color: white;
+    
+}
