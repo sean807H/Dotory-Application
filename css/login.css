@@ -43,5 +43,9 @@ input {
     background: #F4762C; 
     border: none;
     color: #FFF;
-    margin-top: 100px;
+    margin-top: 30px;
+}
+
+login > a {
+    font-size: 3px;
 }

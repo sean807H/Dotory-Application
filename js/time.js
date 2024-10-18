@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadTasksFromLocalStorage() {
     const storeData = localStorage.getItem('tasks') || null;
+    console.log("storeData : " + storeData)
     const storedTasks = JSON.parse(storeData) || [];
     storedTasks.forEach(task => {
         tasks.push({
@@ -156,13 +157,27 @@ function toggleTask(index) {
 }
 
 
-let acornPoints = 0; // 초기 도토리 포인트 10개
+// 페이지 로드 시 로컬 스토리지에서 도토리 포인트를 불러오기
+let acornPoints = localStorage.getItem('acornPoints');
+
+// 만약 로컬 스토리지에 도토리 포인트가 없으면 초기 값(10) 설정
+if (!acornPoints) {
+    acornPoints = 10;  // 초기 도토리 포인트 10개
+    localStorage.setItem('acornPoints', acornPoints);
+} else {
+    acornPoints = parseInt(acornPoints, 10);  // 문자열을 정수로 변환
+}
+
+// 페이지 로드 시 도토리 포인트 표시
+document.getElementById('acornCount').textContent = `${acornPoints}개`;
 
 // 도토리 포인트 업데이트 함수
 function updateAcornPoints(points) {
     acornPoints += points;
-    document.getElementById('acornCount').textContent = `${acornPoints}개`; // 도토리 개수 업데이트
+    localStorage.setItem('acornPoints', acornPoints);  // 로컬 스토리지에 도토리 포인트 저장
+    document.getElementById('acornCount').textContent = `${acornPoints}개`;  // 도토리 개수 업데이트
 }
+
 
 // 시간 없는 일정 완료 처리 함수 (동그라미 체크로 변경)
 function markTaskComplete(index) {
