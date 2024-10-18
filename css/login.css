@@ -29,6 +29,7 @@ input {
     border-radius: 11.27px;
     border: 0.5px solid #CFCFCF;
     background: #FFF;
+    outline: none;
 }
 
 .login_btn {
