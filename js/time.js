@@ -17,31 +17,31 @@ let urgentTasks = [
 
 let intervals = {}; // 각 일정의 타이머를 저장
 
-// 모달 관련 변수
-const modal = document.getElementById('modal');
-const modalMessage = document.getElementById('modal-message');
-const closeModalBtn = document.querySelector('.close-btn');
-const modalConfirmBtn = document.getElementById('modal-confirm-btn');
+// 팝업 창을 보여주는 함수
+function showCustomAlert(title, message) {
+    const popup = document.getElementById('popup');
+    const titleElement = document.getElementById('popup-title');
+    const messageElement = document.getElementById('popup-message');
 
-// 팝업 창을 여는 함수
-function showModal(message) {
-    modalMessage.textContent = message; // 모달에 경고 메시지 설정
-    modal.style.display = 'flex'; // 모달 보이기
+    // 팝업에 타이틀과 메시지를 동적으로 설정
+    titleElement.textContent = title;
+    messageElement.textContent = message;
+
+    // 팝업을 보이게 하고 디졸브 효과 적용 (show 클래스 추가)
+    popup.style.display = 'flex';
+    setTimeout(() => {
+        popup.classList.add('show'); // 점차 나타나게 함
+    }, 10); // 약간의 지연을 줘서 display 설정 후 transition 적용
+
+    // 3초 후 팝업 자동 닫기 (디졸브로 사라짐)
+    setTimeout(() => {
+        popup.classList.remove('show'); // 서서히 사라짐
+        setTimeout(() => {
+            popup.style.display = 'none'; // 완전히 사라진 후 display none 처리
+        }, 500); // transition이 끝난 후 display를 none으로 설정    
+    }, 1300); // 3초 후 팝업이 사라지기 시작
 }
 
-// 팝업 창을 닫는 함수
-function closeModal() {
-    modal.style.display = 'none'; // 모달 숨기기
-}
-
-// 닫기 버튼 및 확인 버튼 클릭 시 모달 닫기
-closeModalBtn.addEventListener('click', closeModal);
-modalConfirmBtn.addEventListener('click', closeModal);
-
-// 기존 alert를 대체하는 함수
-function showCustomAlert(message) {
-    showModal(message);
-}
 
 
 function displayTasks() {
