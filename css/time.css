@@ -31,6 +31,12 @@
     transform: translateY(-50%);
 }
 
+a {
+    color: inherit; /* 부모 요소의 색상을 상속 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+
 #logo-img {
     display: inline-block;
     vertical-align: middle;
