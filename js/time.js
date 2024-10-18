@@ -27,9 +27,9 @@ let tasks = [
 ];
 
 // 마감 임박 작업
-// let urgentTasks = [
-//     { name: 'DD피그마 과제', duration: 10, color: '#3498DB', deadline: '23:59'} // 마감시간이 23:59로 설정됨
-// ];
+let urgentTasks = [
+    { name: 'DD피그마 과제', duration: 10, color: '#3498DB', deadline: '23:59'} // 마감시간이 23:59로 설정됨
+];
 
 let intervals = {}; // 각 일정의 타이머를 저장
 
@@ -89,29 +89,29 @@ function displayTasks() {
         taskList.appendChild(taskElement);
     });
 
-   // displayUrgentTasks(); // 마감 임박 작업 표시
+   displayUrgentTasks(); // 마감 임박 작업 표시
 }
 
 
 // 마감 임박 작업 표시 함수
-// function displayUrgentTasks() {
-//     const urgentTaskList = document.getElementById('urgentTaskList');
-//     urgentTaskList.innerHTML = ''; // 기존 목록 초기화
+function displayUrgentTasks() {
+    const urgentTaskList = document.getElementById('urgentTaskList');
+    urgentTaskList.innerHTML = ''; // 기존 목록 초기화
 
-//     urgentTasks.forEach((task, index) => {
-//         const taskElement = document.createElement('div');
-//         taskElement.classList.add('task');
+    urgentTasks.forEach((task, index) => {
+        const taskElement = document.createElement('div');
+        taskElement.classList.add('task');
 
-//         const remainingTime = calculateTimeLeft(task.deadline);
-//         taskElement.innerHTML = `
-//             <button style="background-color:${task.color};" onclick="toggleUrgentTask(${index})" id="urgent-btn-${index}">▶</button>
-//             <h4>${task.name}</h4>
-//             <span class="time" id="urgent-time-${index}">${formatTime(task.duration * 60)}</span>
-//             <span class="due-time">${remainingTime}</span>
-//         `;
-//         urgentTaskList.appendChild(taskElement);
-//     });
-// }
+        const remainingTime = calculateTimeLeft(task.deadline);
+        taskElement.innerHTML = `
+            <button style="background-color:${task.color};" onclick="toggleUrgentTask(${index})" id="urgent-btn-${index}">▶</button>
+            <h4>${task.name}</h4>
+            <span class="time" id="urgent-time-${index}">${formatTime(task.duration * 60)}</span>
+            <span class="due-time">${remainingTime}</span>
+        `;
+        urgentTaskList.appendChild(taskElement);
+    });
+}
 
 
 // 시간을 포맷하는 함수
