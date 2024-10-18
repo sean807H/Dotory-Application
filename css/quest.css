@@ -135,4 +135,10 @@ button {
 
 button:last-child {
     background: #C6C6C6;
+
+}
+
+a {
+    color: inherit; 
+    text-decoration: none;
 }
