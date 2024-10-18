@@ -9,7 +9,7 @@
 - W [나지은](https://github.com/jieun0240)
 - W [황유진](https://github.com/hofkj)
 - S [장하영](https://github.com/hayeong120)
-- D 김서연
+- D 박세연
 - D 이자연
   
 ## Tools 🛠
