@@ -85,6 +85,8 @@ input {
 
 .deadline {
     display: flex;
+    justify-content: center;
+    align-items: end;
     gap: 5px;
 }
 
@@ -94,7 +96,7 @@ input {
     font-size: 17px;
     font-style: normal;
     font-weight: 500;
-    width: 100px;
+    width: 110px;
 }
 
 .select {
@@ -133,4 +135,10 @@ button {
 
 button:last-child {
     background: #C6C6C6;
+
+}
+
+a {
+    color: inherit; 
+    text-decoration: none;
 }
