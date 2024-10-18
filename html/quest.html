@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/images/Dotory.png" type="image/png">
+    <title>DOTORY</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/quest.css">
+</head>
+
+<body>
+    <!-- container를 body로 생각하고 개발 -->
+    <div class="container">
+        <div class="header">
+            <div id="logo-img"><img src="/images/logo.png" alt=""></div>
+            <div class="Dotory">
+                <img src="/images/Dotory.png" alt="도토리 이미지">
+                <span class="dotory-count">10개</span>
+            </div>
+        </div>
+
+        <div class="container-3">
+            <div class="TaskInput">
+                <div>할 일</div>
+                <input type="text" placeholder="할 일을 입력해주세요.">
+            </div>
+
+            <div class="DeadlineInput">
+                <div>마감 시간 설정</div>
+                <input type="text" placeholder="마감 시간을 설정해주세요.">
+            </div>
+
+            <div class="DeadlineSelector">
+                <div class="deadline">
+                    <div>마감 기한</div>
+                    <div class="select">선택</div>
+                </div>
+
+                <input type="datetime-local" id="calendar">
+            </div>
+        </div>
+
+        <div class="ButtonContainer">
+            <button>완료</button>
+            <button>취소</button>
+        </div>
+
+        <div class="footer">
+            <div id="home"><img src="/images/home.png" alt=""></div>
+            <div id="quest"><img src="/images/quest-black.png" alt=""></div>
+            <div id="planner"><img src="/images/planner.png" alt=""></div>
+            <div id="rank"><img src="/images/rank.png" alt=""></div>
+        </div>
+    </div>
+
+    <script src="/js/quest.js"></script>
+</body>
+
+</html>
