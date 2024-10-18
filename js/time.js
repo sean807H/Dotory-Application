@@ -5,17 +5,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 일정 리스트 관리
 let tasks = [
-    { name: 'JS 공부', duration: 0.1, color: '#F28E36' }, // 시간 있는 예시 일정
-    { name: '골밑슛 연습', duration: null, color: '#F1C40F' }, // 시간 없이 체크만 하는 일정
-    { name: 'GTQ일러스트 연습', duration: 120, color: '#D676F7' }
+    { name: 'JS 공부', duration: 0.1, color: '#F28E36', completed: false }, // 시간 있는 예시 일정
+    { name: '골밑슛 연습', duration: null, color: '#F1C40F', completed: false }, // 시간 없이 체크만 하는 일정
+    { name: 'GTQ일러스트 연습', duration: 120, color: '#D676F7', completed: false }
 ];
 
 // 마감 임박 작업
 let urgentTasks = [
-    { name: 'DD피그마 과제', duration: 5, color: '#3498DB', deadline: '23:59'} // 마감시간이 23:59로 설정됨
+    { name: 'DD피그마 과제', duration: 10, color: '#3498DB', deadline: '23:59'} // 마감시간이 23:59로 설정됨
 ];
 
 let intervals = {}; // 각 일정의 타이머를 저장
+
+// 모달 관련 변수
+const modal = document.getElementById('modal');
+const modalMessage = document.getElementById('modal-message');
+const closeModalBtn = document.querySelector('.close-btn');
+const modalConfirmBtn = document.getElementById('modal-confirm-btn');
+
+// 팝업 창을 여는 함수
+function showModal(message) {
+    modalMessage.textContent = message; // 모달에 경고 메시지 설정
+    modal.style.display = 'flex'; // 모달 보이기
+}
+
+// 팝업 창을 닫는 함수
+function closeModal() {
+    modal.style.display = 'none'; // 모달 숨기기
+}
+
+// 닫기 버튼 및 확인 버튼 클릭 시 모달 닫기
+closeModalBtn.addEventListener('click', closeModal);
+modalConfirmBtn.addEventListener('click', closeModal);
+
+// 기존 alert를 대체하는 함수
+function showCustomAlert(message) {
+    showModal(message);
+}
+
 
 function displayTasks() {
     const taskList = document.getElementById('taskList');
@@ -77,8 +104,14 @@ function formatTime(seconds) {
 
 // 시간 있는 일정 시작/멈춤 토글 함수
 function toggleTask(index) {
-    const button = document.getElementById(`btn-${index}`);
     const task = tasks[index];
+
+    // 이미 완료된 일정인 경우 경고 메시지 표시
+    if (task.completed) {
+        showCustomAlert('이미 완료한 일정입니다');
+        return;
+    }
+    const button = document.getElementById(`btn-${index}`);
     let remainingTime = task.duration * 60;
 
     if (intervals[index]) {
@@ -86,7 +119,7 @@ function toggleTask(index) {
         delete intervals[index];
         button.textContent = '▶';
     } else {
-        button.textContent = '⏸️';
+        button.innerHTML = '<img src="../images/loading.png">';
         intervals[index] = setInterval(() => {
             remainingTime--;
             document.getElementById(`time-${index}`).innerText = formatTime(remainingTime);
@@ -95,16 +128,17 @@ function toggleTask(index) {
                 clearInterval(intervals[index]);
                 delete intervals[index];
                 button.textContent = '✔';
-                alert('일정 완료! 랜덤 도토리 포인트를 얻었습니다.');
+                showCustomAlert('일정 완료! 랜덤 도토리 포인트를 얻었습니다.');
                 const randomPoints = awardRandomPoints(); // 랜덤 도토리 포인트 얻기
                 updateAcornPoints(randomPoints); // 도토리 포인트 업데이트
+                task.completed = true; // 일정 완료 상태로 설정
             }
         }, 1000);
     }
 }
 
 
-let acornPoints = 10; // 초기 도토리 포인트 10개
+let acornPoints = 0; // 초기 도토리 포인트 10개
 
 // 도토리 포인트 업데이트 함수
 function updateAcornPoints(points) {
@@ -114,13 +148,26 @@ function updateAcornPoints(points) {
 
 // 시간 없는 일정 완료 처리 함수 (동그라미 체크로 변경)
 function markTaskComplete(index) {
+    const task = tasks[index]; // 해당 일정 정보 가져오기
+
+    // 이미 완료된 일정인 경우 경고 메시지 표시
+    if (task.completed) {
+        showCustomAlert('이미 완료한 일정입니다.');
+        return;
+    }
+
     const button = document.getElementById(`btn-${index}`);
     button.classList.add('completed'); // 버튼을 완료 상태로 변경
     button.textContent = '✔'; // 동그라미 안에 체크 표시
+
     const randomPoints = Math.floor(Math.random() * 10) + 1; // 1~10 랜덤 도토리 포인트
-    alert(`일정 완료! ${randomPoints} 도토리 포인트를 얻었습니다.`);
-    updateAcornPoints(randomPoints);
+    showCustomAlert(`일정 완료! ${randomPoints} 도토리 포인트를 얻었습니다.`);
+    updateAcornPoints(randomPoints); // 도토리 포인트 업데이트
+
+    // 해당 일정을 완료 상태로 변경
+    task.completed = true;
 }
+
 
 
 // 마감 임박 작업 시작/멈춤 토글 함수
@@ -134,7 +181,7 @@ function toggleUrgentTask(index) {
         delete intervals[`urgent-${index}`];
         button.textContent = '▶';
     } else {
-        button.textContent = '⏸️';
+        button.innerHTML = '<img src="../images/loading.png">';
         intervals[`urgent-${index}`] = setInterval(() => {
             remainingTime--;
             document.getElementById(`urgent-time-${index}`).innerText = formatTime(remainingTime);
@@ -143,7 +190,7 @@ function toggleUrgentTask(index) {
                 clearInterval(intervals[`urgent-${index}`]);
                 delete intervals[`urgent-${index}`];
                 button.textContent = '✔';
-                alert('마감 임박 일정 완료! 랜덤 도토리 포인트를 얻었습니다.');
+                showCustomAlert('마감 임박 일정 완료! 랜덤 도토리 포인트를 얻었습니다.');
                 awardRandomPoints();
             }
         }, 1000);
@@ -167,7 +214,7 @@ function calculateTimeLeft(deadline) {
 // 랜덤 포인트 지급 함수
 function awardRandomPoints() {
     const points = Math.floor(Math.random() * 10) + 1;
-    alert(`축하합니다! ${points} 도토리 포인트를 획득하셨습니다.`);
+    showCustomAlert(`축하합니다! ${points} 도토리 포인트를 획득하셨습니다.`);
     return points; // 포인트를 반환
 }
 

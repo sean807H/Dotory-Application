@@ -16,15 +16,8 @@
 
 .title {
     margin-top: 91px;
-    color: #F4762C;
-    text-align: center;
-    font-family: Itim;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 40px;
-    /* 100% */
-    letter-spacing: -1px;
+    width: 142px;
+    height: 40px;
 }
 
 input {
@@ -36,6 +29,7 @@ input {
     border-radius: 11.27px;
     border: 0.5px solid #CFCFCF;
     background: #FFF;
+    outline: none;
 }
 
 .login_btn {
