@@ -1,0 +1,87 @@
+.day-container {
+    display: flex;
+    margin: 25px;
+    align-items: start;
+    /* align-content: space-between; */
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+.day-title {
+    font-weight: bolder;
+}
+.day-time {
+    font-weight: normal;
+}
+.edit-container {
+    display: flex;
+    gap: 10px;
+    border-bottom-width: black;
+}
+
+.day-img {
+    color:#ccc;
+}
+
+.study-list-container {
+    display: flex;
+    width: 200px;
+    margin-left: 25px;
+    /* margin: 25px; */
+    /* padding: 25px; */
+    border-bottom: 1px solid #ccc;
+    /* justify-content: space-between; */
+}
+.study-rectangle {
+    width: 26.36px;
+    height: 19.33px;
+    border-radius: 5px;
+    /* color는 js를 통해 랜덤으로 줌. */
+    background-color: blue;
+    margin-bottom: 10px;
+}
+.study-list {
+    margin-left: 10px;
+    font-weight: 450;
+    font-size: 13px;
+}
+.study-time {
+    margin-left: 51px;
+    font-size: 11px;
+    color: #6D6D6D;
+}
+
+.planner-container {
+    margin: 25px;
+    width: 142px;
+    height: 548px;
+}
+
+.main-container {
+    display: flex;
+}
+
+[class^="time-slot-"] {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 가로축 중앙 정렬 */
+    height: 100%; /* 부모 요소의 높이에 맞춤 */
+}
+
+
+[id^="planner-grid-"] {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+[id^="planner-grid-"] > div {
+    border-right: 1px solid #ccc;
+}
+
+/* 마지막 칸은 border-right 제거 */
+[id^="planner-grid-"] > div:last-child {
+    border-right: none;
+}

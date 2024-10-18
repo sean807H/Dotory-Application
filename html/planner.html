@@ -1,13 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="/images/Dotory.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/planner.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Dotory</title>
 </head>
 <body>
-    
+    <!-- container를 body로 생각하고 개발 -->
+    <div class="container">
+        <div class="header">
+            <div id="logo-img"><img src="/images/logo.png" alt=""></div> 
+        </div>
+
+        <div class="day-container">
+            <!-- js로 오늘 날짜 가져오기 -->
+            <div class="day-title">2024/10/19(토)</div>
+            <div class="day-time">3:26</div>
+            <div class="edit-container">
+                <div class="day-img"><img src="/images/mdi_art.png" alt=""> |</div>
+                <div class="day-img"><img src="/images/pepicons-pencil_pen.png" alt=""> |</div>
+                <div class="day-img"><img src="/images/Group 10.png" alt=""></div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="study-list-container">
+                <!-- 사각형 하나 만들기 -->
+                <div class="study-rectangle"></div>
+                <!-- 타이머 페이지 중 퀘스트를 js로 공부한 과목 가져오기 -->
+                <div class="study-list">국어</div>
+                <!-- 타이머 페이지 중 시간을 js로 공부한 시간 가져오기 -->
+                <div class="study-time">00:00:00</div>
+            </div>
+            
+            <div class="planner-container">
+                <div id="planner-grid-5" class="planner-grid-5">
+                    <div class="time-slot-5">5</div> 
+                </div>
+                
+                <div id="planner-grid-6" class="planner-grid-6">
+                    <div class="time-slot-6">6</div> 
+                </div>
+                
+                <div id="planner-grid-7" class="planner-grid-7">
+                    <div class="time-slot-7">7</div> 
+                </div>
+                
+                <div id="planner-grid-8" class="planner-grid-8">
+                    <div class="time-slot-8">8</div> 
+                </div>
+                
+                <div id="planner-grid-9" class="planner-grid-9">
+                    <div class="time-slot-9">9</div> 
+                </div>
+                
+                <div id="planner-grid-10" class="planner-grid-10">
+                    <div class="time-slot-10">10</div> 
+                </div>
+                
+                <div id="planner-grid-11" class="planner-grid-11">
+                    <div class="time-slot-11">11</div> 
+                </div>
+                
+                <div id="planner-grid-12" class="planner-grid-12">
+                    <div class="time-slot-12">12</div> 
+                </div>
+                
+                <div id="planner-grid-13" class="planner-grid-13">
+                    <div class="time-slot-13">13</div> 
+                </div>
+                
+                <div id="planner-grid-14" class="planner-grid-14">
+                    <div class="time-slot-14">14</div> 
+                </div>
+                
+                <div id="planner-grid-15" class="planner-grid-15">
+                    <div class="time-slot-15">15</div> 
+                </div>
+                
+                <div id="planner-grid-16" class="planner-grid-16">
+                    <div class="time-slot-16">16</div> 
+                </div>
+                
+                <div id="planner-grid-17" class="planner-grid-17">
+                    <div class="time-slot-17">17</div> 
+                </div>
+                
+                <div id="planner-grid-18" class="planner-grid-18">
+                    <div class="time-slot-18">18</div> 
+                </div>
+                
+                <div id="planner-grid-19" class="planner-grid-19">
+                    <div class="time-slot-19">19</div> 
+                </div>
+                
+                <div id="planner-grid-20" class="planner-grid-20">
+                    <div class="time-slot-20">20</div> 
+                </div>
+                
+                <div id="planner-grid-21" class="planner-grid-21">
+                    <div class="time-slot-21">21</div> 
+                </div>
+                
+                <div id="planner-grid-22" class="planner-grid-22">
+                    <div class="time-slot-22">22</div> 
+                </div>
+                
+                <div id="planner-grid-23" class="planner-grid-23">
+                    <div class="time-slot-23">23</div> 
+                </div>
+                
+                <div id="planner-grid-24" class="planner-grid-24">
+                    <div class="time-slot-24">24</div> 
+                </div>
+                
+                <div id="planner-grid-1" class="planner-grid-1">
+                    <div class="time-slot-1">1</div> 
+                </div>
+                
+                <div id="planner-grid-2" class="planner-grid-2">
+                    <div class="time-slot-2">2</div> 
+                </div>
+                
+                <div id="planner-grid-3" class="planner-grid-3">
+                    <div class="time-slot-3">3</div> 
+                </div>
+                
+                <div id="planner-grid-4" class="planner-grid-4">
+                    <div class="time-slot-4">4</div> 
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div id="home"><img src="/images/home.png" alt=""></div>
+            <div id="quest"><img src="/images/quest.png" alt=""></div>
+            <div id="planner"><img src="/images/planner.png" alt=""></div>
+            <div id="rank"><img src="/images/rank.png" alt=""></div>
+        </div>
+
+        <div class="memo">
+            <div class="memo-title">메모</div>
+        </div>
+
+    </div>
+
+    <script src="/js/index.js"></script>
     <script src="/js/planner.js"></script>
 </body>
 </html>
