@@ -29,7 +29,6 @@
     margin-left: 25px;
     /* margin: 25px; */
     /* padding: 25px; */
-    border-bottom: 1px solid #ccc;
     /* justify-content: space-between; */
 }
 .study-rectangle {
@@ -55,10 +54,14 @@
     margin: 25px;
     width: 142px;
     height: 548px;
+    position: absolute;
+    top: 14%;
+    left: 50%;
 }
 
 .main-container {
     display: flex;
+    /* margin: 30px; */
 }
 
 [class^="time-slot-"] {
@@ -73,9 +76,10 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     border-bottom: 1px solid #ccc;
+    /* border-block-end: none; */
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
-}
+}   
 
 [id^="planner-grid-"] > div {
     border-right: 1px solid #ccc;
@@ -84,4 +88,19 @@
 /* 마지막 칸은 border-right 제거 */
 [id^="planner-grid-"] > div:last-child {
     border-right: none;
+}
+
+/* .line {
+    margin-top: 500px;
+    border-bottom: 1px solid #ccc;
+} */
+
+.memo {
+    margin: 25px;
+    margin-top: 500px;
+    border-top: 1px solid #ccc;
+}
+.memo-title {
+    margin-top: 10px;
+    font-size: 13px;
 }
