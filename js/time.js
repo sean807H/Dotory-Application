@@ -1,7 +1,22 @@
 // DOM이 로드된 후에 실행되도록 설정
 document.addEventListener('DOMContentLoaded', function() {
+    loadTasksFromLocalStorage();
     displayTasks(); // 초기화면에 일정 표시
 });
+
+function loadTasksFromLocalStorage() {
+    const storeData = localStorage.getItem('tasks') || null;
+    const storedTasks = JSON.parse(storeData) || [];
+    storedTasks.forEach(task => {
+        tasks.push({
+            name: task.quest_name,
+            duration: null, // 로컬스토리지에서 시간 정보가 없으므로 기본값 null
+            color: '#F28E36', // 기본 색상 설정
+            completed: false
+        });
+    });
+
+}
 
 // 일정 리스트 관리
 let tasks = [
@@ -11,9 +26,9 @@ let tasks = [
 ];
 
 // 마감 임박 작업
-let urgentTasks = [
-    { name: 'DD피그마 과제', duration: 10, color: '#3498DB', deadline: '23:59'} // 마감시간이 23:59로 설정됨
-];
+// let urgentTasks = [
+//     { name: 'DD피그마 과제', duration: 10, color: '#3498DB', deadline: '23:59'} // 마감시간이 23:59로 설정됨
+// ];
 
 let intervals = {}; // 각 일정의 타이머를 저장
 
@@ -42,11 +57,14 @@ function showCustomAlert(title, message) {
     }, 1300); // 3초 후 팝업이 사라지기 시작
 }
 
-
+function addNewTask(task) {
+    tasks.push(task); // tasks 배열에 새 task 추가
+    displayTasks(); // 새로 추가된 task를 화면에 표시
+}
 
 function displayTasks() {
     const taskList = document.getElementById('taskList');
-    taskList.innerHTML = ''; // 기존 목록 초기화
+    //taskList.innerHTML = ''; // 기존 목록 초기화
 
     tasks.forEach((task, index) => {
         const taskElement = document.createElement('div');
@@ -70,29 +88,29 @@ function displayTasks() {
         taskList.appendChild(taskElement);
     });
 
-    displayUrgentTasks(); // 마감 임박 작업 표시
+   // displayUrgentTasks(); // 마감 임박 작업 표시
 }
 
 
 // 마감 임박 작업 표시 함수
-function displayUrgentTasks() {
-    const urgentTaskList = document.getElementById('urgentTaskList');
-    urgentTaskList.innerHTML = ''; // 기존 목록 초기화
+// function displayUrgentTasks() {
+//     const urgentTaskList = document.getElementById('urgentTaskList');
+//     urgentTaskList.innerHTML = ''; // 기존 목록 초기화
 
-    urgentTasks.forEach((task, index) => {
-        const taskElement = document.createElement('div');
-        taskElement.classList.add('task');
+//     urgentTasks.forEach((task, index) => {
+//         const taskElement = document.createElement('div');
+//         taskElement.classList.add('task');
 
-        const remainingTime = calculateTimeLeft(task.deadline);
-        taskElement.innerHTML = `
-            <button style="background-color:${task.color};" onclick="toggleUrgentTask(${index})" id="urgent-btn-${index}">▶</button>
-            <h4>${task.name}</h4>
-            <span class="time" id="urgent-time-${index}">${formatTime(task.duration * 60)}</span>
-            <span class="due-time">${remainingTime}</span>
-        `;
-        urgentTaskList.appendChild(taskElement);
-    });
-}
+//         const remainingTime = calculateTimeLeft(task.deadline);
+//         taskElement.innerHTML = `
+//             <button style="background-color:${task.color};" onclick="toggleUrgentTask(${index})" id="urgent-btn-${index}">▶</button>
+//             <h4>${task.name}</h4>
+//             <span class="time" id="urgent-time-${index}">${formatTime(task.duration * 60)}</span>
+//             <span class="due-time">${remainingTime}</span>
+//         `;
+//         urgentTaskList.appendChild(taskElement);
+//     });
+// }
 
 
 // 시간을 포맷하는 함수

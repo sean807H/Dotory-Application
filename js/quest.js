@@ -22,9 +22,17 @@ document.querySelector('button').addEventListener('click', async () => {
                 deadline_time: deadline_time
             }),
         });
-
+ 
         if (response.ok) {
+            const questData = { quest_name: questName, deadline_date, deadline_time };
+
+            // localStorage에 새로운 퀘스트를 저장
+            let storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            storedTasks.push(questData);
+            localStorage.setItem('tasks', JSON.stringify(storedTasks));
+            
             alert('퀘스트가 성공적으로 저장되었습니다.');
+            window.location.href = "time.html";
         } else {
             const errorData = await response.json();
             alert(`에러 발생: ${errorData.error}`);
