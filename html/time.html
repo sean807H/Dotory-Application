@@ -12,10 +12,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <div id="logo-img"><img src="/images/logo.png" alt="DOTORI"></div>
+            <a href="/html/home.html"><div id="logo-img"><img src="/images/logo.png" alt="DOTORI"></div></a>
             <div class="acorn-count" id="acornCountContainer">
                 <img src="/images/Dotory.png" alt="Acorn"> <!-- 도토리 이미지 -->
-                <span id="acornCount">10개</span> <!-- 도토리 개수 표시 -->
+                <span id="acornCount">0개</span> <!-- 도토리 개수 표시 -->
             </div>
         </div>
 
@@ -31,6 +31,16 @@
         <div class="highlight" id="urgentTaskList">
             <!-- 마감 임박 작업들 동적으로 표시 -->
         </div>
+        <!-- 모달 팝업 구조 -->
+        <div id="modal" class="modal" style="display: none">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <p id="modal-message">경고 메시지</p>
+                <button id="modal-confirm-btn">확인</button>
+            </div>
+        </div>
+
+
 
         <div class="footer">
             <div id="home"><img src="/images/home.png" alt=""></div>
