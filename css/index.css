@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 390px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* 컨테이너 */
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #F5F7F8;
+    position: relative; /* 푸터 고정 */
+}
+
+/* 헤더 */
+.header {
+    width: 100%;
+}
+
+#logo-img img {
+    margin: 16px 24px;
+}
+
+/* 도토리 */
+.dotory-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 2.5px;
+    margin: 5px 24px;
+}
+
+#name {
+    margin-right: 195px;
+    color: #000;
+    font-family: Pretendard;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+}
+
+.Dotory img {
+    width: 25px;
+    height: 25px;
+}
+
+/* 다람쥐 */
+.squirrel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lv {
+    color: #000;
+    text-align: center;
+    font-family: Itim;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    margin-bottom: 36px;
+    margin-top: 30px;
+}
+
+.squirrel {
+    margin-bottom: 21px;
+}
+
+
+.speech-bubble {
+    background-image: url("/images/speech-bubble.png");
+    width: 270px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.comment {
+    margin-top: 13px;
+}
+
+
+/* 성장 현황 */
+.nextLevel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 왼쪽 정렬로 변경 */
+    margin: 65px 24px 0;
+    gap: 15px; 
+}
+
+.growth-status {
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    text-align: left; /* 텍스트도 왼쪽 정렬 */
+    margin-left: 5px; /* 필요에 따라 약간의 왼쪽 마진 추가 */
+}
+
+.growth-container {
+    width: 342px;
+    padding: 26px 0px; 
+    border-radius: 15px;
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    gap: 17px;
+}
+
+.growth-bar {
+    width: 304px;
+    height: 10px;
+    border-radius: 50px;
+    background: #EEE;
+    position: relative;
+    overflow: hidden;
+}
+
+.growth-bar::before {
+    content: '';
+    width: 60%; 
+    height: 100%;
+    background-color: #F4762C;
+    border-radius: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.growth-container div {
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.dotory-color {
+    color: #F4762C;
+}
