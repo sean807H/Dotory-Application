@@ -12,16 +12,16 @@
 <body>
     <div class="container">
         <div class="header">
-            <div id="logo-img"><img src="/images/logo.png" alt="DOTORI"></div>
+            <a href="/html/home.html"><div id="logo-img"><img src="/images/logo.png" alt="DOTORI"></div></a>
             <div class="acorn-count" id="acornCountContainer">
                 <img src="/images/Dotory.png" alt="Acorn"> <!-- 도토리 이미지 -->
-                <span id="acornCount">10개</span> <!-- 도토리 개수 표시 -->
+                <span id="acornCount">0개</span> <!-- 도토리 개수 표시 -->
             </div>
         </div>
 
         <h2 class="task-title">
             이번주 할 일
-            <div class="add-task" id="addTask">+</div> <!-- 오른쪽에 배치된 일정 추가 버튼 -->
+            <a href="/html/quest.html"><div class="add-task" id="addTask">+</div></a> <!-- 오른쪽에 배치된 일정 추가 버튼 -->
         </h2>
         <div class="task-list" id="taskList">
             <!-- 동적으로 생성되는 일정들 -->
@@ -31,11 +31,21 @@
         <div class="highlight" id="urgentTaskList">
             <!-- 마감 임박 작업들 동적으로 표시 -->
         </div>
+        <!-- 모달 팝업 구조 -->
+        <div id="modal" class="modal" style="display: none">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <p id="modal-message">경고 메시지</p>
+                <button id="modal-confirm-btn">확인</button>
+            </div>
+        </div>
+
+
 
         <div class="footer">
-            <div id="home"><img src="/images/home.png" alt=""></div>
-            <div id="quest"><img src="/images/quest-black.png" alt=""></div>
-            <div id="planner"><img src="/images/planner.png" alt=""></div>
+            <a href="/html/home.html"><div id="home"><img src="/images/home.png" alt=""></div></a>
+            <a href="/html/time.html"><div id="quest"><img src="/images/quest-black.png" alt=""></div></a>
+            <a href="/html/planner.html"><div id="planner"><img src="/images/planner.png" alt=""></div></a>
             <div id="rank"><img src="/images/rank.png" alt=""></div>
         </div>
     </div>
