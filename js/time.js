@@ -8,7 +8,7 @@ function loadTasksFromLocalStorage() {
     const storeData = localStorage.getItem('tasks') || null;
     console.log("storeData : " + storeData)
     const storedTasks = JSON.parse(storeData) || [];
-    storedTasks.forEach(task => {
+    storedTasks.forEach(task => { 
         tasks.push({
             name: task.quest_name,
             duration: null, // 로컬스토리지에서 시간 정보가 없으므로 기본값 null
