@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // 일정 리스트 관리
 let tasks = [
     { name: 'JS 공부', duration: 0.1, color: '#F28E36' }, // 시간 있는 예시 일정
-    { name: '골밑슛 연습', duration: 10, color: '#F1C40F' }, // 시간 없이 체크만 하는 일정
-    { name: 'GTQ일러스트 연습', duration: null, color: '#D676F7' }
+    { name: '골밑슛 연습', duration: null, color: '#F1C40F' }, // 시간 없이 체크만 하는 일정
+    { name: 'GTQ일러스트 연습', duration: 120, color: '#D676F7' }
 ];
 
 // 마감 임박 작업
@@ -29,10 +29,10 @@ function displayTasks() {
         let buttonHtml;
         if (task.duration) {
             // 시간 있는 일정의 경우
-            buttonHtml = `<button id="btn-${index}" style="background-color:${task.color};" onclick="toggleTask(${index})">▶️</button>`;
+            buttonHtml = `<button id="btn-${index}" style="background-color:${task.color};" onclick="toggleTask(${index})">▶</button>`;
         } else {
             // 시간 없는 일정의 경우
-            buttonHtml = `<button id="btn-${index}" style="background-color:${task.color};" onclick="markTaskComplete(${index})">✔️</button>`;
+            buttonHtml = `<button id="btn-${index}" style="background-color:${task.color};" onclick="markTaskComplete(${index})">⚪</button>`;
         }
 
         taskElement.innerHTML = `
@@ -58,7 +58,7 @@ function displayUrgentTasks() {
 
         const remainingTime = calculateTimeLeft(task.deadline);
         taskElement.innerHTML = `
-            <button style="background-color:${task.color};" onclick="toggleUrgentTask(${index})" id="urgent-btn-${index}">▶️</button>
+            <button style="background-color:${task.color};" onclick="toggleUrgentTask(${index})" id="urgent-btn-${index}">▶</button>
             <h4>${task.name}</h4>
             <span class="time" id="urgent-time-${index}">${formatTime(task.duration * 60)}</span>
             <span class="due-time">${remainingTime}</span>
@@ -84,7 +84,7 @@ function toggleTask(index) {
     if (intervals[index]) {
         clearInterval(intervals[index]);
         delete intervals[index];
-        button.textContent = '▶️';
+        button.textContent = '▶';
     } else {
         button.textContent = '⏸️';
         intervals[index] = setInterval(() => {
@@ -94,13 +94,15 @@ function toggleTask(index) {
             if (remainingTime <= 0) {
                 clearInterval(intervals[index]);
                 delete intervals[index];
-                button.textContent = '✅';
+                button.textContent = '✔';
                 alert('일정 완료! 랜덤 도토리 포인트를 얻었습니다.');
-                awardRandomPoints();
+                const randomPoints = awardRandomPoints(); // 랜덤 도토리 포인트 얻기
+                updateAcornPoints(randomPoints); // 도토리 포인트 업데이트
             }
         }, 1000);
     }
 }
+
 
 let acornPoints = 10; // 초기 도토리 포인트 10개
 
@@ -114,7 +116,7 @@ function updateAcornPoints(points) {
 function markTaskComplete(index) {
     const button = document.getElementById(`btn-${index}`);
     button.classList.add('completed'); // 버튼을 완료 상태로 변경
-    button.textContent = '✔️'; // 동그라미 안에 체크 표시
+    button.textContent = '✔'; // 동그라미 안에 체크 표시
     const randomPoints = Math.floor(Math.random() * 10) + 1; // 1~10 랜덤 도토리 포인트
     alert(`일정 완료! ${randomPoints} 도토리 포인트를 얻었습니다.`);
     updateAcornPoints(randomPoints);
@@ -130,7 +132,7 @@ function toggleUrgentTask(index) {
     if (intervals[`urgent-${index}`]) {
         clearInterval(intervals[`urgent-${index}`]);
         delete intervals[`urgent-${index}`];
-        button.textContent = '▶️';
+        button.textContent = '▶';
     } else {
         button.textContent = '⏸️';
         intervals[`urgent-${index}`] = setInterval(() => {
@@ -140,7 +142,7 @@ function toggleUrgentTask(index) {
             if (remainingTime <= 0) {
                 clearInterval(intervals[`urgent-${index}`]);
                 delete intervals[`urgent-${index}`];
-                button.textContent = '✅';
+                button.textContent = '✔';
                 alert('마감 임박 일정 완료! 랜덤 도토리 포인트를 얻었습니다.');
                 awardRandomPoints();
             }
@@ -166,4 +168,6 @@ function calculateTimeLeft(deadline) {
 function awardRandomPoints() {
     const points = Math.floor(Math.random() * 10) + 1;
     alert(`축하합니다! ${points} 도토리 포인트를 획득하셨습니다.`);
+    return points; // 포인트를 반환
 }
+
