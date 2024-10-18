@@ -16,7 +16,7 @@ let randomColor;
 setRandomColor();
 
 function setRandomColor(){
-    randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    randomColor = `#F4762C`;
 }
 // 오늘 날짜를 가져와 .day-title에 표시
 function displayCurrentDate() {
@@ -47,7 +47,7 @@ function applyRandomColorsToStudyRectangles() {
 function displayStudyListFromQuestPage() {
     const studyListElement = document.querySelector('.study-list');
     // 가상의 퀘스트 목록
-    const questStudyList = ['Math', 'Science', 'History']; // 이 리스트는 나중에 동적으로 가져올 수 있음
+    const questStudyList = ['JS 공부하기']; // 이 리스트는 나중에 동적으로 가져올 수 있음
     studyListElement.textContent = questStudyList.join(', ');
 }
 
@@ -55,7 +55,7 @@ function displayStudyListFromQuestPage() {
 function displayStudyTimeFromTimerPage() {
     const studyTimeElement = document.querySelector('.study-time');
     // 가상의 공부 시간
-    const studyTime = '2시간 30분'; // 이 값은 타이머로부터 받아옴
+    const studyTime = '00:21:50 '; // 이 값은 타이머로부터 받아옴
     studyTimeElement.textContent = studyTime;
 }
 
