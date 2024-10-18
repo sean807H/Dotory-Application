@@ -8,7 +8,7 @@ document.querySelector('button').addEventListener('click', async () => {
     if (!questName || !deadlineDateTime) {
         alert('모든 필드를 입력해주세요.');
         return;
-    }
+    } 
 
     try {
         const response = await fetch('http://127.0.0.1:3000/quest', {
@@ -26,9 +26,9 @@ document.querySelector('button').addEventListener('click', async () => {
         if (response.ok) {
             const questData = { quest_name: questName, deadline_date, deadline_time };
             // localStorage에 새로운 퀘스트를 저장
-            let storedTasks = JSON.parse(localStorage.getItem('tasks'))
+            let storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
             storedTasks.push(questData);
-            localStorage.setItem('tasks', JSON.stringify(questData));
+            localStorage.setItem('tasks', JSON.stringify(storedTasks));
             alert('퀘스트가 성공적으로 저장되었습니다.');
             window.location.href = "time.html";
         } else {
@@ -36,8 +36,8 @@ document.querySelector('button').addEventListener('click', async () => {
             alert(`에러 발생: ${errorData.error}`);
         }
     } catch (error) {
-        console.error('Error:', error);
-        alert('서버와의 통신에 실패했습니다.');
+      //  console.error('Error:', error);
+        alert('서버와의 통신에 실패했습니다.'+error);
     }
 });
 
