@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/Dotory.png" type="image/png">
     <title>Login</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
+
 <body>
     <!-- container를 body로 생각하고 개발 -->
     <div class="container">
-        <h1>Dotory</h1>
-        <h1 class="title">로그인</h1>
-        <input type="text" class="myId">
-        <input type="password" class=myPw">
-        <button type="submit" class="login_btn">로그인</button>
-        <a href="">회원가입</a>
+        <div class="login">
+            <div class="title"><img src="/images/login-img.png" alt=""></div>
+            <div class="input-container">
+                <input type="text" class="myId" placeholder="닉네임을 입력해주세요.">
+                <input type="password" class="myPw" placeholder="비밀번호를 입력해주세요.">
+            </div>
+            <button type="submit" class="login_btn">로그인</button>
+            <a href="">회원가입</a>
+        </div>
     </div>
-    <script src="/js/index.js"></script>
+    <script src="/js/login.js"></script>
 </body>
+
 </html>
