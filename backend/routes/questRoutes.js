@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: 'Invalid date or time format' });
   }
 
-  try {
+  try { 
     const newQuest = await Quest.create({
       quest_name,
       deadline_date,
@@ -36,3 +36,4 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+ 
